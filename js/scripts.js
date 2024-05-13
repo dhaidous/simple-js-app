@@ -25,22 +25,33 @@ var pokemonRepository = (function () {
         pokemonList.push(item);
     }
 
+    function addListItem(pokemon) {
+        var pokemonList = document.querySelector('.pokemon-list');
+        var listItem = document.createElement('li');
+        var button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('pokemon-button');
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
+
+        // Add an event listener to the button
+        button.addEventListener('click', function () {
+            showDetails(pokemon);
+        });
+    }
+
+    // Create a new function showDetails()
+    function showDetails(pokemon) {
+        console.log(pokemon); // Log the Pokémon object passed as the parameter
+    }
+
     return {
         getAll: getAll,
-        add: add
+        add: add,
+        addListItem: addListItem
     };
 })();
 
-// Example usage:
-console.log(pokemonRepository.getAll()); // Should return the pokemonList array
-pokemonRepository.add({
-    name: "Pikachu",
-    height: 0.4,
-    types: ["electric"]
-});
-console.log(pokemonRepository.getAll()); // Should return the updated pokemonList array
-
-// forEach loop to iterate over each Pokémon in the repository
 pokemonRepository.getAll().forEach(function (pokemon) {
-    console.log(pokemon.name + ' - Height: ' + pokemon.height + ' - Types: ' + pokemon.types.join(', '));
+    pokemonRepository.addListItem(pokemon);
 });
