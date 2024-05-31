@@ -1,3 +1,4 @@
+
 var pokemonRepository = (function () {
     var pokemonList = []; // Replaced the array of Pokémon objects with an empty array
 
@@ -28,7 +29,7 @@ var pokemonRepository = (function () {
     function showDetails(pokemon) {
         loadDetails(pokemon)
             .then(function () {
-                console.log(pokemon); // Log the Pokémon object with details loaded from the API
+                showModal(pokemon.name, `Height: ${pokemon.height}`, pokemon.imgUrl); // Open the modal with Pokémon details
             })
             .catch(function (error) {
                 console.error(error);
@@ -93,7 +94,7 @@ pokemonRepository.LoadList().then(function () {
     });
 });
 
-function showModal(title, text) {
+function showModal(name, height, imageUrl) {
     let modalContainer = document.querySelector('#modal-container');
 
     // Clear all existing modal content
@@ -108,19 +109,24 @@ function showModal(title, text) {
     closeButtonElement.innerText = 'Close';
     closeButtonElement.addEventListener('click', hideModal);
 
+    let nameElement = document.createElement('h1');
+    nameElement.innerText = name;
 
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = title;
+    let heightElement = document.createElement('p');
+    heightElement.innerText = height;
 
-    let contentElement = document.createElement('p');
-    contentElement.innerText = text;
+    let imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+    imageElement.alt = `${name} image`;
+    imageElement.style.width = '100%';
+    imageElement.style.height = 'auto';
+    imageElement.style.maxHeight = '400px';
 
     modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
+    modal.appendChild(nameElement);
+    modal.appendChild(heightElement);
+    modal.appendChild(imageElement);
     modalContainer.appendChild(modal);
-
-
 
     modalContainer.classList.add('is-visible');
 
@@ -132,15 +138,6 @@ function showModal(title, text) {
             hideModal();
         }
     });
-}
-
-document.querySelector('#show-modal').addEventListener('click', () => {
-    showModal('Modal title', 'This is the modal content!');
-});
-
-function hideModal() {
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.classList.remove('is-visible');
 
     window.addEventListener('keydown', (e) => {
         let modalContainer = document.querySelector('#modal-container');
@@ -148,4 +145,9 @@ function hideModal() {
             hideModal();
         }
     });
+}
+
+function hideModal() {
+    let modalContainer = document.querySelector('#modal-container');
+    modalContainer.classList.remove('is-visible');
 }
