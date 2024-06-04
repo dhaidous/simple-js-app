@@ -1,8 +1,7 @@
-
-  #modal-container {
+#modal-container {
     display: none;
 }
-  
+
 #modal-container.is-visible {
     position: fixed;
     padding: 20px;
@@ -46,5 +45,4 @@ img {
     height: auto;
     max-height: 400px;
 }
-
-  
+/* Only keep necessary custom styles */
