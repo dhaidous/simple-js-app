@@ -7,7 +7,7 @@
     <title>Simple JS App</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css"> <!-- Use the correct path to your CSS file -->
+    <link rel="stylesheet" href="dist/styles.min.css"> <!-- Use the correct path to your CSS file -->
 </head>
 
 <body>
@@ -22,15 +22,6 @@
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
         </div>
@@ -53,7 +44,7 @@
                 <div class="modal-body">
                     <h1 id="modalName"></h1>
                     <p id="modalHeight"></p>
-                    <img id="modalImage" src="" alt="Pokemon image" class="img-fluid">
+                    <img id="modalImage" [src="" alt="Pokemon image" class="img-fluid">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -67,7 +58,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
-    <script src="js/scripts.js"></script> <!-- Correct path to your JavaScript file -->
+    <script src="dist/scripts.min.js"></script> <!-- Correct path to your JavaScript file -->
 </body>
 
 </html>

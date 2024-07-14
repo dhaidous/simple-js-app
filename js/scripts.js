@@ -35,7 +35,7 @@ var pokemonRepository = (function () {
     }
 
     function loadList() {
-        return fetch('https://pokeapi.co/api/v2/pokemon/')
+        return fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
             .then(function (response) {
                 return response.json();
             })
